@@ -3,14 +3,10 @@
 #### 階層的クラスター分析サンプルコード
 ### Rプログラミングでわからないことは大概Google先生で[R 日本語 pdf plot]みたいなノリで調べれば分かる。
 
-### 作業ディレクトリを変更する(授業中は以下ディレクトリで！、自分で実行する際は適宜変更)
-### Rstudioでは[Session]-[Set working directory]で指定可能
-setwd("~/Downloads/prokenA_resume/week1/practice")
-
 ### 同じディレクトリ内に保存しているCSVファイル形式のデータセットを読み込む.
 ### 注意：ダウンロードしたファイルはmacOSではデフォルトで ~/Downloads 以下に保存される．
 ### 1列目のデータを行名としてデータを読み込む
-dataset <- read.csv("./animals.csv",row.names=1)
+dataset <- read.csv("./youtuber.csv",row.names=1)
 
 ### datasetがどのようなものか確認
 dataset
