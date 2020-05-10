@@ -16,6 +16,12 @@ data_dist_method <- "euclidean"     #ユークリッド距離
 data_dist_method <- "manhattan"     #マンハッタン距離
 data_dist_method <- "maximum"       #最大距離
 
+### 全データ間の距離をdata_dist_methodの距離定義に基づいて計算する（距離行列を求める）
+distance_matrix <- dist(dataset, method=data_dist_method)
+
+### 距離行列の確認
+as.matrix(distance_matrix)[1:6,1:6]
+
 ### クラスター間の距離の計算方法を決める。(以下の3つから任意の距離を選択する)
 cluster_dist_method <- "average"   #群平均法
 cluster_dist_method <- "single"    #最小距離法
@@ -28,13 +34,6 @@ if(is_scale==T) dataset <- scale(dataset)
 
 ### datasetの確認
 head(dataset)
-
-### 全データ間の距離をdata_dist_methodの距離定義に基づいて計算する（距離行列を求める）
-distance_matrix <- dist(dataset, method=data_dist_method)
-
-### 距離行列の確認
-as.matrix(distance_matrix)[1:5,1:5]
-
 
 ### 距離行列からcluster_dist_methodで定義したクラスター距離定義に基づいてクラスター分析を行う
 cl_result <- hclust(distance_matrix, method=cluster_dist_method)
@@ -50,5 +49,3 @@ dev.off()
 
 ### 距離行列の保存
 write.csv(as.matrix(distance_matrix), file=sprintf("./distance_matrix_scale_%s_%s.csv",is_scale, data_dist_method))
-
-
